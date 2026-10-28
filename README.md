@@ -43,8 +43,8 @@ For this internal STOCKROOM Inventory Dashboard, CSR is the superior choice beca
 ### Installation & Execution
 ```bash
 # 1. Clone repository
-git clone https://github.com/MAFA-KHAN/web_assignment.git
-cd web_assignment
+git clone https://github.com/MAFA-KHAN/STOCKROOM.git
+cd STOCKROOM
 
 # 2. Install dependencies
 npm install

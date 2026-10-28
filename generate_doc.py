@@ -65,7 +65,7 @@ def create_submission_document():
         ("Registration / Roll Number:", "[Insert Your Registration ID Here, e.g. 2022-CS-XXX]"),
         ("Semester & Section:", "BS Computer Science / AI — 5th Semester (Section A)"),
         ("Live Deployment URL:", "https://stockroom-inventory-dashboard.netlify.app/  (Replace with your real URL)"),
-        ("GitHub Repository URL:", "https://github.com/MAFA-KHAN/web_assignment.git"),
+        ("GitHub Repository URL:", "https://github.com/MAFA-KHAN/STOCKROOM.git"),
     ]
 
     for i, (label, val) in enumerate(meta_data):
