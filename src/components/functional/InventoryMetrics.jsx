@@ -8,18 +8,27 @@ import CardWrapper from './CardWrapper';
  * Reuses CardWrapper (demonstrating props.children)
  */
 const InventoryMetrics = ({ metrics }) => {
+  const safeMetrics = metrics || {
+    totalProducts: 0,
+    totalUnits: 0,
+    lowStockCount: 0,
+    outOfStockCount: 0,
+    inStockCount: 0,
+    totalValue: 0,
+  };
+
   const cards = [
     {
       title: 'Active Products',
-      value: metrics.totalProducts,
-      subtitle: `${metrics.inStockCount} healthy items in catalog`,
+      value: safeMetrics.totalProducts ?? 0,
+      subtitle: `${safeMetrics.inStockCount ?? 0} healthy items in catalog`,
       icon: Package,
       color: 'var(--brand-accent)',
       bgColor: 'var(--brand-accent-light)',
     },
     {
       title: 'Total Stock Units',
-      value: metrics.totalUnits.toLocaleString(),
+      value: (safeMetrics.totalUnits ?? 0).toLocaleString(),
       subtitle: 'Aggregated volume across warehouses',
       icon: Layers,
       color: '#3b82f6',
@@ -27,25 +36,25 @@ const InventoryMetrics = ({ metrics }) => {
     },
     {
       title: 'Low Stock Alert',
-      value: metrics.lowStockCount,
+      value: safeMetrics.lowStockCount ?? 0,
       subtitle: 'Threshold: under 10 remaining units',
       icon: AlertTriangle,
       color: '#d97706',
       bgColor: 'var(--status-low-bg)',
-      highlight: metrics.lowStockCount > 0,
+      highlight: (safeMetrics.lowStockCount ?? 0) > 0,
     },
     {
       title: 'Out of Stock',
-      value: metrics.outOfStockCount,
+      value: safeMetrics.outOfStockCount ?? 0,
       subtitle: 'Requires immediate replenishment',
       icon: XCircle,
       color: '#dc2626',
       bgColor: 'var(--status-out-bg)',
-      highlight: metrics.outOfStockCount > 0,
+      highlight: (safeMetrics.outOfStockCount ?? 0) > 0,
     },
     {
       title: 'Portfolio Valuation',
-      value: `$${metrics.totalValue.toLocaleString(undefined, {
+      value: `$${(safeMetrics.totalValue ?? 0).toLocaleString(undefined, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2,
       })}`,

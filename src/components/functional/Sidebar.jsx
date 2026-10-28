@@ -4,7 +4,7 @@ import { Package, LayoutDashboard, History, BarChart3, Boxes, Layers, CheckCircl
 const Sidebar = ({ activeTab, onSelectTab, onOpenAuditLog, metrics }) => {
   const navItems = [
     { id: 'dashboard', label: 'Inventory Dashboard', icon: LayoutDashboard },
-    { id: 'products', label: 'Product Catalog', icon: Boxes, badge: metrics.totalProducts },
+    { id: 'products', label: 'Product Catalog', icon: Boxes, badge: metrics?.totalProducts ?? 0 },
     { id: 'audit', label: 'Audit Trail', icon: History, action: onOpenAuditLog },
   ];
 

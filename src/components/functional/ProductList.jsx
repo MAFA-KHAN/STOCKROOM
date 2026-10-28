@@ -11,7 +11,7 @@ import ProductCard from './ProductCard';
  * - Empty inventory and search states with short-circuit && and ternary operators
  */
 const ProductList = ({
-  products,
+  products = [],
   onUpdateStock,
   onDeleteProduct,
   onOpenAddProduct,
@@ -24,7 +24,8 @@ const ProductList = ({
 
   // Extract unique categories dynamically
   const categories = useMemo(() => {
-    const set = new Set(products.map((p) => p.category));
+    const safeList = Array.isArray(products) ? products : [];
+    const set = new Set(safeList.map((p) => p.category));
     return ['ALL', ...Array.from(set)];
   }, [products]);
 

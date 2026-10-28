@@ -4,16 +4,29 @@ const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('stockroom_theme');
-    if (saved) return saved;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+    try {
+      const saved = typeof window !== 'undefined' && localStorage.getItem('stockroom_theme');
+      if (saved) return saved;
+      if (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+    } catch (e) {
+      console.warn('LocalStorage unavailable for theme:', e);
+    }
+    return 'light';
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('stockroom_theme', theme);
+    try {
+      if (typeof document !== 'undefined') {
+        document.documentElement.setAttribute('data-theme', theme);
+      }
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('stockroom_theme', theme);
+      }
+    } catch (e) {
+      console.warn('Failed to set theme in storage:', e);
+    }
   }, [theme]);
 
   const toggleTheme = () => {
