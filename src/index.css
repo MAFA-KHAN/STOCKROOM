@@ -1,0 +1,353 @@
+/* ==========================================================================
+   STOCKROOM — Enterprise Design System
+   Color tokens, CSS Variables, Typography & Micro-animations
+   ========================================================================== */
+
+:root {
+  /* Brand Core */
+  --brand-primary: #172a27;
+  --brand-accent: #287d62;
+  --brand-accent-hover: #1f644e;
+  --brand-accent-light: #e6f4ef;
+
+  /* Surfaces & Backgrounds (Light Mode) */
+  --bg-app: #f5f6f2;
+  --bg-sidebar: #172a27;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fafafa;
+  --bg-input: #ffffff;
+  --bg-elevated: #ffffff;
+  --border-subtle: #e5e8e3;
+  --border-strong: #d2d7cf;
+
+  /* Typography */
+  --text-primary: #172a27;
+  --text-secondary: #566461;
+  --text-muted: #849390;
+  --text-inverse: #ffffff;
+
+  /* Semantic Status: Stock Badges */
+  --status-in-bg: #e4f0e8;
+  --status-in-text: #166534;
+  --status-in-border: #bbf7d0;
+
+  --status-low-bg: #fef3c7;
+  --status-low-text: #b45309;
+  --status-low-border: #fde68a;
+
+  --status-out-bg: #fee2e2;
+  --status-out-text: #b91c1c;
+  --status-out-border: #fecaca;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 3px rgba(23, 42, 39, 0.05);
+  --shadow-md: 0 4px 12px rgba(23, 42, 39, 0.07);
+  --shadow-lg: 0 10px 28px rgba(23, 42, 39, 0.1);
+  --shadow-modal: 0 20px 40px rgba(15, 25, 23, 0.22);
+
+  /* Radius & Transitions */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+  --transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme='dark'] {
+  --brand-primary: #e6f4ef;
+  --brand-accent: #34a381;
+  --brand-accent-hover: #40ba95;
+  --brand-accent-light: rgba(40, 125, 98, 0.2);
+
+  /* Surfaces & Backgrounds (Dark Mode) */
+  --bg-app: #0d1514;
+  --bg-sidebar: #090f0e;
+  --bg-card: #131f1d;
+  --bg-card-hover: #182725;
+  --bg-input: #182725;
+  --bg-elevated: #1b2c29;
+  --border-subtle: #203330;
+  --border-strong: #2c4440;
+
+  /* Typography */
+  --text-primary: #f0f5f3;
+  --text-secondary: #9cb1ac;
+  --text-muted: #6b807b;
+  --text-inverse: #0d1514;
+
+  /* Semantic Status (Dark) */
+  --status-in-bg: rgba(34, 197, 94, 0.15);
+  --status-in-text: #4ade80;
+  --status-in-border: rgba(74, 222, 128, 0.3);
+
+  --status-low-bg: rgba(245, 158, 11, 0.15);
+  --status-low-text: #fbbf24;
+  --status-low-border: rgba(251, 191, 36, 0.3);
+
+  --status-out-bg: rgba(239, 68, 68, 0.15);
+  --status-out-text: #f87171;
+  --status-out-border: rgba(248, 113, 113, 0.3);
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.5);
+  --shadow-modal: 0 24px 50px rgba(0, 0, 0, 0.7);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  transition: background-color 200ms ease, color 200ms ease;
+  overflow-x: hidden;
+}
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* App Layout Grid */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-viewport {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.content-area {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .content-area {
+    padding: 1.25rem 1rem;
+  }
+}
+
+/* Card Container Styles */
+.card-wrapper {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.card-wrapper:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+/* Status Badges */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.status-in-stock {
+  background-color: var(--status-in-bg);
+  color: var(--status-in-text);
+  border-color: var(--status-in-border);
+}
+
+.status-low-stock {
+  background-color: var(--status-low-bg);
+  color: var(--status-low-text);
+  border-color: var(--status-low-border);
+}
+
+.status-out-stock {
+  background-color: var(--status-out-bg);
+  color: var(--status-out-text);
+  border-color: var(--status-out-border);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+/* Button Variants */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.125rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+  outline: none;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background-color: var(--brand-accent);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--border-subtle);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-strong);
+}
+
+.btn-danger-outline {
+  background-color: transparent;
+  border-color: var(--status-out-border);
+  color: var(--status-out-text);
+}
+
+.btn-danger-outline:hover {
+  background-color: var(--status-out-bg);
+}
+
+.btn-icon {
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-icon:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-card-hover);
+  border-color: var(--border-subtle);
+}
+
+/* Form Inputs */
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 0.375rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.form-control:focus {
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 3px rgba(40, 125, 98, 0.15);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes toastSlide {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 220ms ease-out forwards;
+}
+
+/* Footer Branded strictly "Powered by Mafa" */
+.app-footer {
+  margin-top: auto;
+  padding: 1.5rem 2.5rem;
+  border-top: 1px solid var(--border-subtle);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  background-color: var(--bg-card);
+}
+
+.app-footer span {
+  font-weight: 700;
+  color: var(--brand-accent);
+  letter-spacing: 0.03em;
+}
