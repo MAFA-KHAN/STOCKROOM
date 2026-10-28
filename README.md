@@ -66,25 +66,6 @@ npm run preview
 
 ---
 
-## Deployment Guide (Netlify / Vercel)
-
-### Option 1: One-Click Netlify Deployment
-1. Push your repository to GitHub.
-2. Sign in to [Netlify](https://www.netlify.com/).
-3. Click **Add new site** > **Import an existing project** > **GitHub**.
-4. Select `stockroom-inventory-dashboard`.
-5. Verify build settings:
-   - **Build command**: `npm run build`
-   - **Publish directory**: `dist`
-6. Click **Deploy Site**.
-
-### Option 2: Vercel Deployment
-1. Sign in to [Vercel](https://vercel.com/).
-2. Click **Add New...** > **Project** and import your repository.
-3. Framework preset will automatically detect **Vite**.
-4. Click **Deploy**.
-
----
-
-## Brand Signature
-Powered by **Mafa**
+<p align="center">
+  Powered by <strong>Mafa</strong>
+</p>
